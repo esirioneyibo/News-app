@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>570592148697-2aj5ubjh6h8f4uk4p0caelu28pi27glf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.570592148697-2aj5ubjh6h8f4uk4p0caelu28pi27glf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDgS2gZvoVnSp9BTuiG1GFlSrkXGKMKfxI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>570592148697</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>eu.bestwan.tarjousApp</string>
+	<key>PROJECT_ID</key>
+	<string>ale-sales-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ale-sales-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:570592148697:ios:a8411a843ce18dae4252c8</string>
+	<key>DATABASE_URL</key>
+	<string>https://ale-sales-app.firebaseio.com</string>
+</dict>
+</plist>
