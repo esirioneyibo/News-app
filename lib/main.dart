@@ -33,15 +33,13 @@ class _TarjousAleState extends State<TarjousAle>
           children: <Widget>[
             MyMenu(
               title: "K-Market",
-              icon: Icons.account_balance,
-              //images: Image.asset('assets/images/k-market.png'),
+              imageUrl: 'assets/images/k-market.png',
               shape: Colors.brown,
               page: GridViewDemo(),
             ),
             MyMenu(
               title: "C-Market", 
-              icon: Icons.account_balance_wallet,             
-              //images: getWidget('assets/images/k-citymarket.png'),
+              imageUrl: 'assets/images/k-citymarket.png',
               shape: Colors.grey,
               page: HomePage(),                           
             ),
@@ -88,12 +86,18 @@ class _TarjousAleState extends State<TarjousAle>
 }
 
 class MyMenu extends StatelessWidget {
-  MyMenu({this.title, this.icon, this.shape, this.page /*, this.images */});
+  MyMenu({this.title, this.icon, this.shape, this.page, this.imageUrl = ''}) {
+    if(icon != null) {
+      assert(imageUrl == null || imageUrl.isEmpty);
+    } else if(imageUrl != null && imageUrl.isEmpty) {
+      assert(icon == null);
+    }
+  }
 
   final page;
   final String title;
   final IconData icon;
-  //final Image images;
+  final String imageUrl;
   final MaterialColor shape;
 
   @override
@@ -109,12 +113,18 @@ class MyMenu extends StatelessWidget {
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: <Widget>[  
-              //Column(children: [buildPic(), Text("here")]),           
-              Icon(
-                icon,
-                size: 80.0,
-                color: shape,
+            children: <Widget>[
+              Visibility(
+                visible: icon != null && imageUrl.isEmpty,
+                child: Icon(
+                  icon,
+                  size: 80.0,
+                  color: shape,
+                ),
+                replacement: Image.asset(imageUrl,
+                  width: 80,
+                  height: 80,
+                ),
               ),
               Text(title, style: new TextStyle(fontSize: 18.0))
             ],
