@@ -3,6 +3,7 @@ import 'screen/home_page.dart';
 import 'screen/home_page2.dart';
 import 'screen/favorite.dart';
 
+
 void main(List<String> args) {
   runApp(
     new MaterialApp(
@@ -31,9 +32,9 @@ class _TarjousAleState extends State<TarjousAle>
       ),
       body: Container(
         child: GridView.count(
-          crossAxisCount: 2,
+          crossAxisCount: 3,
           children: <Widget>[
-            MyMenu(
+      MyMenu(
               title: "K-Market",
               imageUrl: 'assets/images/k-market.png',
               shape: Colors.brown,
@@ -56,7 +57,7 @@ class _TarjousAleState extends State<TarjousAle>
               imageUrl: 'assets/images/gigantti.png',
               shape: Colors.orange,
               page: Favorite(),
-            ),            
+            ),  
           ],
         ),
       ),
