@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'gridview_demo.dart';
-import 'listview.dart';
+import 'screen/home_page.dart';
+import 'screen/home_page2.dart';
+import 'screen/favorite.dart';
 
 void main(List<String> args) {
   runApp(
@@ -18,42 +19,48 @@ class TarjousAle extends StatefulWidget {
 
 class _TarjousAleState extends State<TarjousAle>
     with SingleTickerProviderStateMixin {
-  int _currentIndex = 0;
-  @override
+      int _currentIndex = 0;
+
+        @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        title: Text("TARJOUS JA ALE!!"),
+        title: Text("TARJOUSHAUKKA!!!"),
         centerTitle: true,
         backgroundColor: Colors.amber,
       ),
       body: Container(
         child: GridView.count(
-          crossAxisCount: 3,
+          crossAxisCount: 2,
           children: <Widget>[
             MyMenu(
               title: "K-Market",
-              icon: Icons.account_balance,
-              //images: Image.asset('assets/images/k-market.png'),
+              imageUrl: 'assets/images/k-market.png',
               shape: Colors.brown,
-              page: GridViewDemo(),
+              page: MyHomePage(),
             ),
             MyMenu(
-              title: "C-Market", 
-              icon: Icons.account_balance_wallet,             
-              //images: getWidget('assets/images/k-citymarket.png'),
+              title: "K-CityMarket",
+              imageUrl: 'assets/images/k-citymarket.png',
               shape: Colors.grey,
-              page: HomePage(),                           
+              page: HomePage2(),
             ),
             MyMenu(
               title: "S-Market",
-              icon: Icons.airline_seat_flat,
+              imageUrl: 'assets/images/s-market.png',
               shape: Colors.indigo,
+              page: Favorite(),
             ),
+            MyMenu(
+              title: "Gigantti",
+              imageUrl: 'assets/images/gigantti.png',
+              shape: Colors.orange,
+              page: Favorite(),
+            ),            
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+ bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.amber,
@@ -66,34 +73,37 @@ class _TarjousAleState extends State<TarjousAle>
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            title: Text('Search'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera),
-            title: Text('Camera'),
+            title: Text('Favorite'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             title: Text('Profile'),
-          )
+          ),
         ],
-        onTap: (index) {
+                onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
         },
       ),
+      //body: currentPage,
     );
   }
 }
 
-class MyMenu extends StatelessWidget {
-  MyMenu({this.title, this.icon, this.shape, this.page /*, this.images */});
+      class MyMenu extends StatelessWidget {
+  MyMenu({this.title, this.icon, this.shape, this.page, this.imageUrl = ''}) {
+    if (icon != null) {
+      assert(imageUrl == null || imageUrl.isEmpty);
+    } else if (imageUrl != null && imageUrl.isEmpty) {
+      assert(icon == null);
+    }
+  }
 
   final page;
   final String title;
   final IconData icon;
-  //final Image images;
+  final String imageUrl;
   final MaterialColor shape;
 
   @override
@@ -109,12 +119,19 @@ class MyMenu extends StatelessWidget {
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: <Widget>[  
-              //Column(children: [buildPic(), Text("here")]),           
-              Icon(
-                icon,
-                size: 80.0,
-                color: shape,
+            children: <Widget>[
+              Visibility(
+                visible: icon != null && imageUrl.isEmpty,
+                child: Icon(
+                  icon,
+                  size: 80.0,
+                  color: shape,
+                ),
+                replacement: Image.asset(
+                  imageUrl,
+                  width: 80,
+                  height: 80,
+                ),
               ),
               Text(title, style: new TextStyle(fontSize: 18.0))
             ],
@@ -125,17 +142,4 @@ class MyMenu extends StatelessWidget {
   }
 }
 
-/* Widget getWidget(imagePath){
-   return Container(
-      child: Column(
-          children : <Widget>[
-            Image.asset(imagePath),           
-          ] 
-       )
-     );
-} */
 
-/* Widget buildPic() => Image != null ? 
-Image.asset(image) : Icon(icon)
-
- */
