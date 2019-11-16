@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'screen/home_page.dart';
-import 'screen/home_page2.dart';
+import 'package:tarjous_app/screen/account.dart';
+import 'package:tarjous_app/screen/help_screen.dart';
+import 'package:tarjous_app/screen/login_page.dart';
+import 'package:tarjous_app/screen/products_page.dart';
+import 'package:tarjous_app/screen/setting_screen.dart';
+import 'pages/home_page.dart';
+import 'pages/home_page2.dart';
 import 'screen/favorite.dart';
-
 
 void main(List<String> args) {
   runApp(
@@ -20,9 +24,9 @@ class TarjousAle extends StatefulWidget {
 
 class _TarjousAleState extends State<TarjousAle>
     with SingleTickerProviderStateMixin {
-      int _currentIndex = 0;
+  int _currentIndex = 0;
 
-        @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
@@ -30,11 +34,107 @@ class _TarjousAleState extends State<TarjousAle>
         centerTitle: true,
         backgroundColor: Colors.amber,
       ),
+      drawer: new Drawer(
+        child: new ListView(
+          children: <Widget>[
+            new Card(
+              child: UserAccountsDrawerHeader(
+                accountName: new Text("Naomi A. Schultz"),
+                accountEmail: new Text("NaomiASchultz@armyspy.com"),
+                decoration: new BoxDecoration(
+                  backgroundBlendMode: BlendMode.difference,
+                  color: Colors.white30,
+
+                  /* image: new DecorationImage(
+               //   image: new ExactAssetImage('assets/images/lake.jpeg'),
+                  fit: BoxFit.cover,
+                ),*/
+                ),
+                currentAccountPicture: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "https://www.fakenamegenerator.com/images/sil-male.png")),
+              ),
+            ),
+            new Card(
+              elevation: 4.0,
+              child: new Column(
+                children: <Widget>[
+                  new ListTile(
+                      leading: Icon(Icons.favorite),
+                      title: new Text("Profile"),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AccountScreen()));
+                      }),
+                  new Divider(),
+                  new ListTile(
+                      leading: Icon(Icons.history),
+                      title: new Text("Favorite "),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FavoritesScreen(
+                                      toolbarname: 'Favorite',
+                                    )));
+                      }),
+                ],
+              ),
+            ),
+            new Card(
+              elevation: 4.0,
+              child: new Column(
+                children: <Widget>[
+                  new ListTile(
+                      leading: Icon(Icons.settings),
+                      title: new Text("Setting"),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SettingScreen(
+                                      toolbarname: 'Setting',
+                                    )));
+                      }),
+                  new Divider(),
+                  new ListTile(
+                      leading: Icon(Icons.help),
+                      title: new Text("Help"),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HelpScreen(
+                                      toolbarname: 'Help',
+                                    )));
+                      }),
+                ],
+              ),
+            ),
+            new Card(
+              elevation: 4.0,
+              child: new ListTile(
+                  leading: Icon(Icons.power_settings_new),
+                  title: new Text(
+                    "Logout",
+                    style:
+                        new TextStyle(color: Colors.redAccent, fontSize: 17.0),
+                  ),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginPage()));
+                  }),
+            )
+          ],
+        ),
+      ),
       body: Container(
         child: GridView.count(
           crossAxisCount: 3,
           children: <Widget>[
-      MyMenu(
+            MyMenu(
               title: "K-Market",
               imageUrl: 'assets/images/k-market.png',
               shape: Colors.brown,
@@ -50,18 +150,18 @@ class _TarjousAleState extends State<TarjousAle>
               title: "S-Market",
               imageUrl: 'assets/images/s-market.png',
               shape: Colors.indigo,
-              page: Favorite(),
+              page: ProductPage(),
             ),
             MyMenu(
               title: "Gigantti",
               imageUrl: 'assets/images/gigantti.png',
               shape: Colors.orange,
-              page: Favorite(),
-            ),  
+              page: LoginPage(),
+            ),
           ],
         ),
       ),
- bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.amber,
@@ -81,7 +181,7 @@ class _TarjousAleState extends State<TarjousAle>
             title: Text('Profile'),
           ),
         ],
-                onTap: (index) {
+        onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
@@ -92,7 +192,7 @@ class _TarjousAleState extends State<TarjousAle>
   }
 }
 
-      class MyMenu extends StatelessWidget {
+class MyMenu extends StatelessWidget {
   MyMenu({this.title, this.icon, this.shape, this.page, this.imageUrl = ''}) {
     if (icon != null) {
       assert(imageUrl == null || imageUrl.isEmpty);
@@ -142,5 +242,3 @@ class _TarjousAleState extends State<TarjousAle>
     );
   }
 }
-
-

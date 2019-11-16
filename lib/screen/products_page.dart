@@ -3,23 +3,23 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import '../model/post.dart';
-import '../screen/post_details.dart';
+import '../pages/products_details.dart';
+import '../model/products.dart';
 import '../util/strings.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage() : super();
+class ProductPage extends StatefulWidget {
+  ProductPage() : super();
 
-  final String title = "K-MARKET";
+  final String title = "S-MARKET";
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _ProductPageState createState() => new _ProductPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ProductPageState extends State<ProductPage> {
   bool _isRequestSent = false;
   bool _isRequestFailed = false;
-  List<Post> postList = [];
+  List<Products> productsList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ? _showRetryUI()
                 : new Container(
                     child: new ListView.builder(
-                        itemCount: postList.length,
+                        itemCount: productsList.length,
                         scrollDirection: Axis.vertical,
                         itemBuilder: (BuildContext context, int index) {
                           return _getPostWidgets(index);
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void sendRequest() async {
     String url =
-        "https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${Strings.apiKey}";
+        "https://my-json-server.typicode.com/esirioneyibo/my-json-server/products";
     try {
       http.Response response = await http.get(url);
       // Did request succeeded?
@@ -71,10 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _getPostWidgets(int index) {
-    var post = postList[index];
+    var products = productsList[index];
     return new GestureDetector(
       onTap: () {
-        openDetailsUI(post);
+        openDetailsUI(products);
       },
       child: new Container(
         margin: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
               new Container(
                 width: 150.0,
                 child: new CachedNetworkImage(
-                  imageUrl: post.thumbUrl,
+                  imageUrl: products.imageUrl,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: new Container(
                 margin: new EdgeInsets.all(10.0),
                 child: new Text(
-                  post.title,
+                  products.title,
                   style: new TextStyle(color: Colors.black, fontSize: 18.0),
                 ),
               )),
@@ -107,9 +107,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void parseResponse(Map response) {
     List results = response["results"];
     for (var jsonObject in results) {
-      var post = Post.getPostFrmJSONPost(jsonObject);
-      postList.add(post);
-      print(post);
+      var products = Products.getPostFrmJSONPost(jsonObject);
+      productsList.add(products);
+      print(products);
     }
     setState(() => _isRequestSent = true);
   }
@@ -155,10 +155,10 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  openDetailsUI(Post post) {
+  openDetailsUI(Products products) {
     Navigator.push(
         context,
         new MaterialPageRoute(
-            builder: (BuildContext context) => new PostDetails(post)));
+            builder: (BuildContext context) => new ProductsDetails(products)));
   }
 }

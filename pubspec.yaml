@@ -35,6 +35,10 @@ dependencies:
   cached_network_image:
   intl:
   url_launcher:  
+  groovin_material_icons:
+  flutter_range_slider:
+  carousel_pro:
+  loader_search_bar:
   
 
 dev_dependencies:

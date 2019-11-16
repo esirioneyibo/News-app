@@ -117,6 +117,7 @@ class _PostDetailsState extends State<PostDetails> {
                 ),
               ),
             ),
+            SizedBox(height: 20.0,),
              Card(
                   child: new Container(
                     child: new Row(
@@ -139,7 +140,7 @@ class _PostDetailsState extends State<PostDetails> {
                         Container(
                           margin: const EdgeInsets.only(left: 110.0),
                           child: new RaisedButton(
-                            onPressed: shareNotice(),
+                            onPressed: null,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: new Text(

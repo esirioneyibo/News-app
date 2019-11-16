@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
-import '../screen/post_details2.dart';
+import '../pages/post_details2.dart';
 import '../model/post2.dart';
 import '../util/strings.dart';
 
