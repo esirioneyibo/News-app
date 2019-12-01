@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import '../pages/products_details.dart';
+
 import '../model/products.dart';
+import '../pages/products_details.dart';
 import '../util/strings.dart';
 
 class ProductPage extends StatefulWidget {
@@ -58,10 +60,10 @@ class _ProductPageState extends State<ProductPage> {
       // Did request succeeded?
       if (response.statusCode == HttpStatus.OK) {
         // We're expecting a Json object as the result
-        Map decode = json.decode(response.body);
+        List decode = json.decode(response.body);
+
         parseResponse(decode);
       } else {
-        print(response.statusCode);
         handleRequestError();
       }
     } catch (e) {
@@ -104,9 +106,8 @@ class _ProductPageState extends State<ProductPage> {
     );
   }
 
-  void parseResponse(Map response) {
-    List results = response["results"];
-    for (var jsonObject in results) {
+  void parseResponse(List result) {
+    for (var jsonObject in result) {
       var products = Products.getPostFrmJSONPost(jsonObject);
       productsList.add(products);
       print(products);

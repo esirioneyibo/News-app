@@ -39,6 +39,7 @@ dependencies:
   flutter_range_slider:
   carousel_pro:
   loader_search_bar:
+  provider:
   
 
 dev_dependencies:

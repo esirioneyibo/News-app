@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tarjous_app/screen/account.dart';
-import 'package:tarjous_app/screen/help_screen.dart';
-import 'package:tarjous_app/screen/login_page.dart';
-import 'package:tarjous_app/screen/products_page.dart';
-import 'package:tarjous_app/screen/setting_screen.dart';
+import 'account/account.dart';
+import 'model/authentication.dart';
+import 'screen/help_screen.dart';
+import 'account/login_page.dart';
+import 'pages/products_page.dart';
+import 'account/setting_screen.dart';
 import 'pages/home_page.dart';
 import 'pages/home_page2.dart';
-import 'screen/favorite.dart';
+import 'account/favorite.dart';
 
 void main(List<String> args) {
   runApp(
@@ -18,6 +19,13 @@ void main(List<String> args) {
 }
 
 class TarjousAle extends StatefulWidget {
+
+  //TarjousAle({this.auth, this.onSignedOut,})
+
+  //final AuthImplementation auth;
+  //final VoidCallback onSignedOut;
+
+
   @override
   _TarjousAleState createState() => _TarjousAleState();
 }
