@@ -163,3 +163,4 @@ class _ProductPageState extends State<ProductPage> {
             builder: (BuildContext context) => new ProductsDetails(products)));
   }
 }
+

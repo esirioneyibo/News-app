@@ -65,4 +65,17 @@ class _MappingPageState extends State<MappingPage> {
     return null;
   }
 }
+
+Future<dynamic> initUser() async {
+    googleUser = await _ensureLoggedInOnStartUp();
+    if (googleUser == null) {
+      setState(() {
+        state.isLoading = false;
+      });
+    } else {
+      // If there is a user, tell Flutter to keep that
+      // loading screen up Firebase logs in this user.
+      var firebaseUser = await logIntoFirebase();                     // new
+    }
+  }
  */

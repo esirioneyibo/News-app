@@ -60,7 +60,7 @@ class Account extends State<AccountScreen> {
                         // padding: const EdgeInsets.all(3.0),
                         child: ClipOval(
                           child: Image.network(
-                              'https://www.fakenamegenerator.com/images/sil-male.png'),
+                              'https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png'),
                         ),
                       )),
 

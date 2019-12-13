@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'account/account.dart';
-import 'model/authentication.dart';
+//import 'model/authentication.dart';
 import 'screen/help_screen.dart';
 import 'account/login_page.dart';
 import 'pages/products_page.dart';
@@ -19,12 +19,10 @@ void main(List<String> args) {
 }
 
 class TarjousAle extends StatefulWidget {
-
   //TarjousAle({this.auth, this.onSignedOut,})
 
   //final AuthImplementation auth;
   //final VoidCallback onSignedOut;
-
 
   @override
   _TarjousAleState createState() => _TarjousAleState();
@@ -60,7 +58,7 @@ class _TarjousAleState extends State<TarjousAle>
                 ),
                 currentAccountPicture: CircleAvatar(
                     backgroundImage: NetworkImage(
-                        "https://www.fakenamegenerator.com/images/sil-male.png")),
+                        "https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png")),
               ),
             ),
             new Card(
@@ -84,9 +82,7 @@ class _TarjousAleState extends State<TarjousAle>
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => FavoritesScreen(
-                                      toolbarname: 'Favorite',
-                                    )));
+                                builder: (context) => FavoritesScreen()));
                       }),
                 ],
               ),
@@ -165,6 +161,42 @@ class _TarjousAleState extends State<TarjousAle>
               imageUrl: 'assets/images/gigantti.png',
               shape: Colors.orange,
               page: LoginPage(),
+            ),
+            MyMenu(
+              title: "H&M",
+              imageUrl: 'assets/images/h&m.png',
+              shape: Colors.red,
+              page: FavoritesScreen(),
+            ),
+            MyMenu(
+              title: "Mototnet",
+              imageUrl: 'assets/images/motonet.png',
+              shape: Colors.deepOrange,
+              page: FavoritesScreen(),
+            ),
+            MyMenu(
+              title: "K-Rauta",
+              imageUrl: 'assets/images/k-rauta.png',
+              shape: Colors.lightGreen,
+              page: FavoritesScreen(),
+            ),
+            MyMenu(
+              title: "Lindex",
+              imageUrl: 'assets/images/lindex.png',
+              shape: Colors.lightBlue,
+              page: FavoritesScreen(),
+            ),
+            MyMenu(
+              title: "Sportia",
+              imageUrl: 'assets/images/sportia.png',
+              shape: Colors.deepPurple,
+              page: FavoritesScreen(),
+            ),
+            MyMenu(
+              title: "XXL",
+              imageUrl: 'assets/images/xxl.png',
+              shape: Colors.teal,
+              page: FavoritesScreen(),
             ),
           ],
         ),
