@@ -35,9 +35,9 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  _scaffoldKey.currentState.showSnackBar(const SnackBar(
-                      content: const Text('')));
-                      shareNotice(context, products);
+                  _scaffoldKey.currentState
+                      .showSnackBar(const SnackBar(content: const Text('')));
+                  shareNotice(context, products);
                 }),
           ],
         ),
@@ -116,18 +116,24 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                 ),
               ),
             ),
-            new Container(
-              margin: new EdgeInsets.only(top: 20.0),
-              child: new RaisedButton(
-                onPressed: _launchUrl,
-                child: new Text(
-                  Strings.readMore,
-                  style: new TextStyle(color: Colors.white),
-                ),
-                color: Theme.of(context).accentColor,
-                splashColor: Colors.deepOrangeAccent,
+            new ButtonTheme(
+              // make buttons use the appropriate styles for cards
+              child: new ButtonBar(
+                alignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  new FlatButton(
+                    child: new Text(Strings.readMore),
+                    onPressed: _launchUrl,
+                  ),
+                  new FlatButton(
+                    child: new Text(Strings.share),
+                    onPressed: () {
+                      shareNotice(context, products);
+                    },
+                  ),
+                ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -152,13 +158,13 @@ class _ProductsDetailsState extends State<ProductsDetails> {
   }
 }
 
-  Future shareNotice(BuildContext context, Products products) async {
-    final RenderBox box = context.findRenderObject();
-    final String text = "${products.title} - ${products.url}";
+Future shareNotice(BuildContext context, Products products) async {
+  final RenderBox box = context.findRenderObject();
+  final String text = "${products.title} - ${products.url}";
 
-    await Share.share(
-      text,
-      subject: products.description,
-      sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
-    );
-  }
+  await Share.share(
+    text,
+    subject: products.description,
+    sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
+  );
+}

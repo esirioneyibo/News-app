@@ -36,9 +36,9 @@ class _PostDetailsState extends State<PostDetails> {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  _scaffoldKey.currentState.showSnackBar(const SnackBar(
-                      content: const Text('')));
-                      shareNotice(context, post);
+                  _scaffoldKey.currentState
+                      .showSnackBar(const SnackBar(content: const Text('')));
+                  shareNotice(context, post);
                 }),
           ],
         ),
@@ -117,46 +117,50 @@ class _PostDetailsState extends State<PostDetails> {
                 ),
               ),
             ),
-            SizedBox(height: 20.0,),
-             Card(
-                  child: new Container(
-                    child: new Row(
-                      children: <Widget>[
-                        Container(
-                          margin: const EdgeInsets.only(left: 30.0),
-                          child: new RaisedButton(
-                            onPressed: _launchUrl,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: new Text(
-                                Strings.readMore,
-                                style: new TextStyle(color: Colors.white),
-                              ),
-                            ),
-                            color: Theme.of(context).accentColor,
-                            splashColor: Colors.deepOrangeAccent,
+            SizedBox(
+              height: 20.0,
+            ),
+            Card(
+              child: new Container(
+                child: new Row(
+                  children: <Widget>[
+                    Container(
+                      margin: const EdgeInsets.only(left: 30.0),
+                      child: new RaisedButton(
+                        onPressed: _launchUrl,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: new Text(
+                            Strings.readMore,
+                            style: new TextStyle(color: Colors.white),
                           ),
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 110.0),
-                          child: new RaisedButton(
-                            onPressed: null,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: new Text(
-                                Strings.share,
-                                style: new TextStyle(color: Colors.white),
-                              ),
-                            ),
-                            color: Theme.of(context).accentColor,
-                            splashColor: Colors.deepOrangeAccent,
-                          ),
-                        ),
-                      ],
+                        color: Theme.of(context).accentColor,
+                        splashColor: Colors.deepOrangeAccent,
+                      ),
                     ),
-                  ),
+                    new ButtonTheme(
+                      // make buttons use the appropriate styles for cards
+                      child: new ButtonBar(
+                        alignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          new FlatButton(
+                            child: new Text(Strings.readMore),
+                            onPressed: _launchUrl,
+                          ),
+                          new FlatButton(
+                            child: new Text(Strings.share),
+                            onPressed: () {
+                              shareNotice(context, post);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-            
+              ),
+            ),
           ],
         ),
       ),
@@ -181,13 +185,13 @@ class _PostDetailsState extends State<PostDetails> {
   }
 }
 
-  Future shareNotice(BuildContext context, Post post) async {
-    final RenderBox box = context.findRenderObject();
-    final String text = "${post.title} - ${post.url}";
+Future shareNotice(BuildContext context, Post post) async {
+  final RenderBox box = context.findRenderObject();
+  final String text = "${post.title} - ${post.url}";
 
-    await Share.share(
-      text,
-      subject: post.summary,
-      sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
-    );
-  }
+  await Share.share(
+    text,
+    subject: post.summary,
+    sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
+  );
+}

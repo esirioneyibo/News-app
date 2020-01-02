@@ -17,7 +17,11 @@ class TarjousAle extends StatefulWidget {
 class _TarjousAleState extends State<TarjousAle>
     with SingleTickerProviderStateMixin {
   int _selectedPage = 0;
-  final List <Widget> _pageOptions = [TarjousAle(), FavoritesScreen(), AccountScreen()];
+  final List<Widget> _pageOptions = [
+    TarjousAle(),
+    FavoritesScreen(),
+    AccountScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,7 @@ class _TarjousAleState extends State<TarjousAle>
         backgroundColor: Colors.amber,
       ),
       drawer: MyDrawer(),
-      body: _pageOptions[_selectedPage], Menus(),
+      body: Menus(), // _pageOptions[_selectedPage],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedPage,
         type: BottomNavigationBarType.fixed,

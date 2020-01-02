@@ -28,11 +28,12 @@ class Account extends State<AccountScreen> {
       Icons.do_not_disturb_on,
       color: Colors.black38,
     );
- 
 
     //List<address> addresLst = loadAddress() as List<address> ;
     return new Scaffold(
       appBar: new AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.amber,
         title: Text(
           'My Account',
         ),

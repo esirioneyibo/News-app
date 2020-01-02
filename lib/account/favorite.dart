@@ -6,12 +6,15 @@ class FavoritesScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
-        backgroundColor: Colors.brown[400],
+        centerTitle: true,
+        backgroundColor: Colors.amber,
         elevation: 0.0,
-        title: Text('Sign in to Fire Auth'),
+        title: Text('My Favorite'),
       ),
-      body: Container(
-        child: Text('My Favorite Items'),
+      body: Center(
+        child: Container(
+          child: Text('My Favorite Items'),
+        ),
       ),
     );
   }

@@ -47,6 +47,8 @@ class Setting extends State<SettingScreen> {
     return new Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.amber,
           leading: IconButton(
             icon: Icon(_backIcon()),
             alignment: Alignment.centerLeft,
@@ -56,7 +58,6 @@ class Setting extends State<SettingScreen> {
             },
           ),
           title: Text(toolbarname),
-          backgroundColor: Colors.white,
         ),
         body: Container(
           child: Column(

@@ -17,8 +17,6 @@ class HelpScreen extends StatefulWidget {
 }
 
 class Help extends State<HelpScreen> {
-  
-
   bool switchValue = false;
 
   // String toolbarname = 'Fruiys & Vegetables';
@@ -58,7 +56,8 @@ class Help extends State<HelpScreen> {
             },
           ),
           title: Text(toolbarname),
-          backgroundColor: Colors.white,
+          centerTitle: true,
+          backgroundColor: Colors.amber,
         ),
         body: Container(
           child: Column(
