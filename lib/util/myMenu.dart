@@ -42,7 +42,7 @@ class MyMenu extends StatelessWidget {
                   height: 80,
                 ),
               ),
-              Text(title, style: new TextStyle(fontSize: 18.0))
+              Expanded(child: Text(title, style: new TextStyle(fontSize: 17.0)))
             ],
           ),
         ),

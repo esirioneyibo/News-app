@@ -12,6 +12,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  // ignore: unused_field
   String _email, _password;
   bool _isObscured = true;
   Color _eyeButtonColor = Colors.grey;
@@ -19,7 +20,10 @@ class _LoginPageState extends State<LoginPage> {
   Padding buildTitle() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Text('Login', style: TextStyle(fontSize: 42.0),),
+      child: Text(
+        'Login',
+        style: TextStyle(fontSize: 42.0),
+      ),
     );
   }
 
@@ -40,20 +44,20 @@ class _LoginPageState extends State<LoginPage> {
   TextFormField buildEmailTextField() {
     return TextFormField(
       onSaved: (emailInput) => _email = emailInput,
+      // ignore: missing_return
       validator: (emailInput) {
         if (emailInput.isEmpty) {
           return 'Please enter an email';
         }
       },
-      decoration: InputDecoration(
-        labelText: 'Email Address'
-      ),
+      decoration: InputDecoration(labelText: 'Email Address'),
     );
   }
 
   TextFormField buildPasswordInput(BuildContext context) {
     return TextFormField(
       onSaved: (passwordInput) => _password = passwordInput,
+      // ignore: missing_return
       validator: (passwordInput) {
         if (passwordInput.isEmpty) {
           return 'Please enter a password';
@@ -66,9 +70,7 @@ class _LoginPageState extends State<LoginPage> {
             if (_isObscured) {
               setState(() {
                 _isObscured = false;
-                _eyeButtonColor = Theme
-                  .of(context)
-                  .primaryColor;
+                _eyeButtonColor = Theme.of(context).primaryColor;
               });
             } else {
               setState(() {
@@ -77,7 +79,10 @@ class _LoginPageState extends State<LoginPage> {
               });
             }
           },
-          icon: Icon(Icons.remove_red_eye, color: _eyeButtonColor,),
+          icon: Icon(
+            Icons.remove_red_eye,
+            color: _eyeButtonColor,
+          ),
         ),
       ),
       obscureText: _isObscured,
@@ -89,7 +94,10 @@ class _LoginPageState extends State<LoginPage> {
       padding: const EdgeInsets.only(top: 8.0),
       child: Align(
         alignment: Alignment.centerRight,
-        child: Text('Forgot Password?', style: TextStyle(fontSize: 12.0, color: Colors.grey),),
+        child: Text(
+          'Forgot Password?',
+          style: TextStyle(fontSize: 12.0, color: Colors.grey),
+        ),
       ),
     );
   }
@@ -99,20 +107,23 @@ class _LoginPageState extends State<LoginPage> {
       child: SizedBox(
         height: 50.0,
         width: 270.0,
+        // ignore: deprecated_member_use
         child: FlatButton(
           onPressed: () {
             if (_formKey.currentState.validate()) {
               //Only gets here if the fields pass
               _formKey.currentState.save();
+              // ignore: todo
               //TODO Check values and navigate to new page
             }
           },
           color: Colors.grey[900],
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-          child: Text('LOGIN', style: Theme
-            .of(context)
-            .primaryTextTheme
-            .button,),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+          child: Text(
+            'LOGIN',
+            style: Theme.of(context).primaryTextTheme.button,
+          ),
         ),
       ),
     );
@@ -121,7 +132,10 @@ class _LoginPageState extends State<LoginPage> {
   Align buildOrText() {
     return Align(
       alignment: Alignment.center,
-      child: Text('or login with', style: TextStyle(fontSize: 12.0, color: Colors.grey),),
+      child: Text(
+        'or login with',
+        style: TextStyle(fontSize: 12.0, color: Colors.grey),
+      ),
     );
   }
 
@@ -135,9 +149,8 @@ class _LoginPageState extends State<LoginPage> {
       height: 46.0,
       width: 46.0,
       decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: Colors.grey, width: 0.5)
-      ),
+          shape: BoxShape.circle,
+          border: Border.all(color: Colors.grey, width: 0.5)),
     );
   }
 
@@ -145,15 +158,16 @@ class _LoginPageState extends State<LoginPage> {
     return Align(
       child: RichText(
         text: TextSpan(
-          text: 'You Don\'t have an account?',
-          style: TextStyle(fontSize: 12.0, color: Colors.grey),
-          children: <TextSpan>[
-            TextSpan(
-              text: ' SIGN UP',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0, color: Colors.black)
-            ),
-          ]
-        ),
+            text: 'You Don\'t have an account?',
+            style: TextStyle(fontSize: 12.0, color: Colors.grey),
+            children: <TextSpan>[
+              TextSpan(
+                  text: ' SIGN UP',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14.0,
+                      color: Colors.black)),
+            ]),
       ),
     );
   }
@@ -169,24 +183,41 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: kToolbarHeight),
             buildTitle(),
             buildTitleLine(),
-            SizedBox(height: 70.0,),
+            SizedBox(
+              height: 70.0,
+            ),
             buildEmailTextField(),
-            SizedBox(height: 30.0,),
+            SizedBox(
+              height: 30.0,
+            ),
             buildPasswordInput(context),
             buildPasswordText(),
-            SizedBox(height: 60.0,),
+            SizedBox(
+              height: 60.0,
+            ),
             buildLoginButton(context),
-            SizedBox(height: 30.0,),
+            SizedBox(
+              height: 30.0,
+            ),
             buildOrText(),
-            SizedBox(height: 16.0,),
+            SizedBox(
+              height: 16.0,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                buildSocialMediaButtons(GroovinMaterialIcons.google, Colors.blue),
-                SizedBox(width: 16.0,),
-                buildSocialMediaButtons(GroovinMaterialIcons.facebook, Colors.blue.shade800),
-                SizedBox(width: 16.0,),
-                buildSocialMediaButtons(GroovinMaterialIcons.twitter, Colors.lightBlue),
+                buildSocialMediaButtons(
+                    GroovinMaterialIcons.google, Colors.blue),
+                SizedBox(
+                  width: 16.0,
+                ),
+                buildSocialMediaButtons(
+                    GroovinMaterialIcons.facebook, Colors.blue.shade800),
+                SizedBox(
+                  width: 16.0,
+                ),
+                buildSocialMediaButtons(
+                    GroovinMaterialIcons.twitter, Colors.lightBlue),
               ],
             ),
             SizedBox(height: 70.0),

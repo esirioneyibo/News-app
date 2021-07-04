@@ -76,6 +76,7 @@ class PostDetails2 extends StatelessWidget {
                       children: <Widget>[
                         Container(
                           margin: const EdgeInsets.only(left: 30.0),
+                          // ignore: deprecated_member_use
                           child: new RaisedButton(
                             onPressed: _launchUrl,
                             child: Padding(
@@ -85,12 +86,14 @@ class PostDetails2 extends StatelessWidget {
                                 style: new TextStyle(color: Colors.white),
                               ),
                             ),
+                            // ignore: deprecated_member_use
                             color: Theme.of(context).accentColor,
                             splashColor: Colors.deepOrangeAccent,
                           ),
                         ),
                         Container(
                           margin: const EdgeInsets.only(left: 110.0),
+                          // ignore: deprecated_member_use
                           child: new RaisedButton(
                             onPressed: null,
                             child: Padding(
@@ -100,6 +103,7 @@ class PostDetails2 extends StatelessWidget {
                                 style: new TextStyle(color: Colors.white),
                               ),
                             ),
+                            // ignore: deprecated_member_use
                             color: Theme.of(context).accentColor,
                             splashColor: Colors.deepOrangeAccent,
                           ),

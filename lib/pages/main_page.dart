@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tarjous_app/account/account.dart';
-import 'package:tarjous_app/account/favorite.dart';
 import 'package:tarjous_app/util/drawer.dart';
 import 'package:tarjous_app/util/menus.dart';
 
@@ -17,11 +15,6 @@ class TarjousAle extends StatefulWidget {
 class _TarjousAleState extends State<TarjousAle>
     with SingleTickerProviderStateMixin {
   int _selectedPage = 0;
-  final List<Widget> _pageOptions = [
-    TarjousAle(),
-    FavoritesScreen(),
-    AccountScreen()
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -42,14 +35,17 @@ class _TarjousAleState extends State<TarjousAle>
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
+            // ignore: deprecated_member_use
             title: Text('Home'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
+            // ignore: deprecated_member_use
             title: Text('Favorite'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
+            // ignore: deprecated_member_use
             title: Text('Profile'),
           ),
         ],

@@ -37,6 +37,7 @@ class _PostDetailsState extends State<PostDetails> {
                 ),
                 onPressed: () {
                   _scaffoldKey.currentState
+                      // ignore: deprecated_member_use
                       .showSnackBar(const SnackBar(content: const Text('')));
                   shareNotice(context, post);
                 }),
@@ -126,6 +127,7 @@ class _PostDetailsState extends State<PostDetails> {
                   children: <Widget>[
                     Container(
                       margin: const EdgeInsets.only(left: 30.0),
+                      // ignore: deprecated_member_use
                       child: new RaisedButton(
                         onPressed: _launchUrl,
                         child: Padding(
@@ -135,6 +137,7 @@ class _PostDetailsState extends State<PostDetails> {
                             style: new TextStyle(color: Colors.white),
                           ),
                         ),
+                        // ignore: deprecated_member_use
                         color: Theme.of(context).accentColor,
                         splashColor: Colors.deepOrangeAccent,
                       ),
@@ -144,10 +147,12 @@ class _PostDetailsState extends State<PostDetails> {
                       child: new ButtonBar(
                         alignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
+                          // ignore: deprecated_member_use
                           new FlatButton(
                             child: new Text(Strings.readMore),
                             onPressed: _launchUrl,
                           ),
+                          // ignore: deprecated_member_use
                           new FlatButton(
                             child: new Text(Strings.share),
                             onPressed: () {
@@ -179,6 +184,7 @@ class _PostDetailsState extends State<PostDetails> {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
+      // ignore: deprecated_member_use
       _scaffoldKey.currentState.showSnackBar(
           new SnackBar(content: new Text('Cannot launch "$url"')));
     }

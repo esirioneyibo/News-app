@@ -36,6 +36,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                 ),
                 onPressed: () {
                   _scaffoldKey.currentState
+                      // ignore: deprecated_member_use
                       .showSnackBar(const SnackBar(content: const Text('')));
                   shareNotice(context, products);
                 }),
@@ -121,10 +122,12 @@ class _ProductsDetailsState extends State<ProductsDetails> {
               child: new ButtonBar(
                 alignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
+                  // ignore: deprecated_member_use
                   new FlatButton(
                     child: new Text(Strings.readMore),
                     onPressed: _launchUrl,
                   ),
+                  // ignore: deprecated_member_use
                   new FlatButton(
                     child: new Text(Strings.share),
                     onPressed: () {
@@ -152,6 +155,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
+      // ignore: deprecated_member_use
       _scaffoldKey.currentState.showSnackBar(
           new SnackBar(content: new Text('Cannot launch "$url"')));
     }

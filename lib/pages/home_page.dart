@@ -56,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
     try {
       http.Response response = await http.get(url);
       // Did request succeeded?
+      // ignore: deprecated_member_use
       if (response.statusCode == HttpStatus.OK) {
         // We're expecting a Json object as the result
         Map decode = json.decode(response.body);
@@ -132,12 +133,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           new Padding(
             padding: new EdgeInsets.only(top: 10.0),
+            // ignore: deprecated_member_use
             child: new RaisedButton(
               onPressed: retryRequest,
               child: new Text(
                 Strings.retry,
                 style: new TextStyle(color: Colors.white),
               ),
+              // ignore: deprecated_member_use
               color: Theme.of(context).accentColor,
               splashColor: Colors.deepOrangeAccent,
             ),

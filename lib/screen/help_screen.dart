@@ -29,6 +29,7 @@ class Help extends State<HelpScreen> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final TextStyle dialogTextStyle =
+        // ignore: deprecated_member_use
         theme.textTheme.subhead.copyWith(color: theme.textTheme.caption.color);
 
     IconData _backIcon() {
@@ -38,12 +39,23 @@ class Help extends State<HelpScreen> {
           return Icons.arrow_back;
         case TargetPlatform.iOS:
           return Icons.arrow_back_ios;
+        case TargetPlatform.linux:
+          // ignore: todo
+          // TODO: Handle this case.
+          break;
+        case TargetPlatform.macOS:
+          // ignore: todo
+          // TODO: Handle this case.
+          break;
+        case TargetPlatform.windows:
+          // ignore: todo
+          // TODO: Handle this case.
+          break;
       }
       assert(false);
       return null;
     }
 
-    final Orientation orientation = MediaQuery.of(context).orientation;
     return new Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
@@ -125,6 +137,7 @@ class Help extends State<HelpScreen> {
                                           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                                           style: dialogTextStyle),
                                       actions: <Widget>[
+                                        // ignore: deprecated_member_use
                                         FlatButton(
                                             child: const Text('DISAGREE'),
                                             onPressed: () {
@@ -169,6 +182,7 @@ class Help extends State<HelpScreen> {
                                             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                                             style: dialogTextStyle),
                                         actions: <Widget>[
+                                          // ignore: deprecated_member_use
                                           FlatButton(
                                               child: const Text('DISAGREE'),
                                               onPressed: () {
@@ -212,6 +226,7 @@ class Help extends State<HelpScreen> {
                                             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                                             style: dialogTextStyle),
                                         actions: <Widget>[
+                                          // ignore: deprecated_member_use
                                           FlatButton(
                                               child: const Text('DISAGREE'),
                                               onPressed: () {
@@ -253,60 +268,10 @@ class Help extends State<HelpScreen> {
         margin: EdgeInsets.only(left: 10.0, right: 0.0, top: 0.0, bottom: 0.0),
       );
 
-  _verticalDivider() => Container(
-        padding: EdgeInsets.all(2.0),
-      );
-
-  Widget _status(status) {
-    if (status == 'Cabcel Order') {
-      return FlatButton.icon(
-          label: Text(
-            status,
-            style: TextStyle(color: Colors.red),
-          ),
-          icon: const Icon(
-            Icons.highlight_off,
-            size: 18.0,
-            color: Colors.red,
-          ),
-          onPressed: () {
-            // Perform some action
-          });
-    } else {
-      return FlatButton.icon(
-          label: Text(
-            status,
-            style: TextStyle(color: Colors.green),
-          ),
-          icon: const Icon(
-            Icons.check_circle,
-            size: 18.0,
-            color: Colors.green,
-          ),
-          onPressed: () {
-            // Perform some action
-          });
-    }
-  }
-
   erticalD() => Container(
         margin: EdgeInsets.only(left: 10.0, right: 0.0, top: 0.0, bottom: 0.0),
       );
 
   bool a = true;
   String mText = "Press to hide";
-  double _lowerValue = 1.0;
-  double _upperValue = 100.0;
-
-  void _visibilitymethod() {
-    setState(() {
-      if (a) {
-        a = false;
-        mText = "Press to show";
-      } else {
-        a = true;
-        mText = "Press to hide";
-      }
-    });
-  }
 }

@@ -65,6 +65,7 @@ class Account extends State<AccountScreen> {
                         ),
                       )),
 
+                  // ignore: deprecated_member_use
                   new FlatButton(
                     onPressed: null,
                     child: Text(
